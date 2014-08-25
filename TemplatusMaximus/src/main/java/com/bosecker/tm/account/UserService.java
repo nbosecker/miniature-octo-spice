@@ -18,8 +18,8 @@ public class UserService implements UserDetailsService {
 	
 	@PostConstruct	
 	protected void initialize() {
-		accountRepository.save(new Account("user", "demo", "ROLE_USER"), new TmStudent("first", "last"));
-		accountRepository.save(new Account("admin", "admin", "ROLE_ADMIN"), new TmStudent("first", "last"));
+		accountRepository.save(new Account("joe@mail.com", "joe@email.com", "ROLE_USER"), new TmStudent("Joe", "User"));
+		accountRepository.save(new Account("nbosecker@gmail.com", "test", "ROLE_ADMIN"), new TmStudent("Nancy", "Admin"));
 	}
 	
 	@Override

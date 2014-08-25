@@ -38,6 +38,16 @@ public class SignupController {
 		userService.signin(account);
         // see /WEB-INF/i18n/messages.properties and /WEB-INF/views/homeSignedIn.html
         MessageHelper.addSuccessAttribute(ra, "signup.success");
-		return "redirect:/";
+        
+        if (account.getRole() == "ROLE_ADMIN")
+        {
+        	System.out.print("THIS IS ADMIN SIGNUP");
+        	return "redirect:/admin";
+        }
+        else 
+        {
+        	System.out.print("THIS IS USER SIGNUP");
+        	return "redirect:/user";
+        }
 	}
 }

@@ -22,6 +22,29 @@ public class TmStudent implements java.io.Serializable {
     @JoinColumn(name = "accountId")
     private Account account;
 	
+	@Column(name="hw1")
+	private int hw1 = 0;
+	
+	@Column (name="hw2")
+	private int hw2 = 0;
+	
+	@Column (name="hw3")
+	private int hw3 = 0;
+	
+	@Column (name="hw4")
+	private int hw4 = 0;
+	
+	@Column (name="hw5")
+	private int hw5 = 0;
+	
+	@Column (name="midterm")
+	private int midterm = 0;
+	
+	@Column (name="thefinal")
+	private int thefinal = 0;
+	
+	@Column (name="participation")
+	private int participation = 40;
 	
 	@Column
 	private String firstName;
@@ -106,6 +129,70 @@ public class TmStudent implements java.io.Serializable {
 
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+
+	public Integer getHw1() {
+		return hw1;
+	}
+
+	public void setHw1(Integer hw1) {
+		this.hw1 = hw1;
+	}
+
+	public Integer getHw2() {
+		return hw2;
+	}
+
+	public void setHw2(Integer hw2) {
+		this.hw2 = hw2;
+	}
+
+	public Integer getHw3() {
+		return hw3;
+	}
+
+	public void setHw3(Integer hw3) {
+		this.hw3 = hw3;
+	}
+
+	public Integer getHw4() {
+		return hw4;
+	}
+
+	public void setHw4(Integer hw4) {
+		this.hw4 = hw4;
+	}
+
+	public Integer getHw5() {
+		return hw5;
+	}
+
+	public void setHw5(Integer hw5) {
+		this.hw5 = hw5;
+	}
+
+	public Integer getMidterm() {
+		return midterm;
+	}
+
+	public void setMidterm(Integer midterm) {
+		this.midterm = midterm;
+	}
+
+	public Integer getThefinal() {
+		return thefinal;
+	}
+
+	public void setThefinal(Integer thefinal) {
+		this.thefinal = thefinal;
+	}
+
+	public Integer getParticipation() {
+		return participation;
+	}
+
+	public void setParticipation(Integer participation) {
+		this.participation = participation;
 	}
 
 }

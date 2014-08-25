@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title th:text="#{view.index.title}">Welcome!</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
+    <link href="../../../resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}" />
+    <link href="../../../resources/css/backgrid.css" rel="stylesheet" media="screen" th:href="@{/resources/css/backgrid.css}" />
+	<!-- script src="../../../resources/css/backgrid.css" rel="stylesheet" media="screen"></script -->
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
+    <script src="../../../resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>
+	<script src="../../../resources/js/backgrid.min.js" th:src="@{/resources/js/backgrid.min.js}"></script>
+</head>
+<body>
+<div th:replace="fragments/headerAdmin :: header">&nbsp;</div>
+<div class="container">
+    <!-- /* Handle the flash message */-->
+    <th:block th:if="${message != null}">
+        <!-- /* The message code is returned from the @Controller */ -->
+        <div th:replace="fragments/alert :: alert (type=${#strings.toLowerCase(message.type)}, message=#{${message.message}(${#authentication.name})})">&nbsp;</div>
+    </th:block>
+    <div id="backgrid-example" class="backgrid-container"></div>
+    <!-- <p>
+        Welcome to Templatus Maximus, you admin!
+     </p> -->
+</div>
+<div th:replace="fragments/footer :: footer">&nbsp;</div>
+</body>
+
+<script type="text/javascript">
+  var Territory = Backbone.Model.extend({});
+
+  var Territories = Backbone.Collection.extend({
+    model: Territory,
+    url: "examples/territories.json"
+  });
+
+  var territories = new Territories(); 
+  
+  var DeleteCell = Backgrid.UriCell.extend({
+	    template: _.template('<button><a>Update</a></button>'),
+	    events: {
+	      //"click": "deleteRow"
+	    },
+	    deleteRow: function (e) {
+	      console.log("Hello");
+	      e.preventDefault();
+//	      this.model.collection.remove(this.model);
+	    },
+	    render: function () {
+          this.constructor.__super__.render.apply(this, arguments);
+	      this.$el.html(this.template());
+	      this.$("a").attr({href: "admin/updateuser"});
+	      //this.delegateEvents();
+	      return this;
+	    }
+	});
+
+  var columns = [{
+	    name: "id", // The key of the model attribute
+	    label: "ID", // The name to display in the header
+	    editable: false, // By default every cell in a column is editable, but *ID* shouldn't be
+	    // Defines a cell type, and ID is displayed as an integer without the ',' separating 1000s.
+	    cell: Backgrid.IntegerCell.extend({
+	      orderSeparator: ''
+	    })
+	  }, {
+	    name: "alias",
+	    label: "Alias",
+	    // The cell type can be a reference of a Backgrid.Cell subclass, any Backgrid.Cell subclass instances like *id* above, or a string
+	    cell: "string" // This is converted to "StringCell" and a corresponding class in the Backgrid package namespace is looked up
+	  }, {
+	    name: "firstName",
+	    label: "First Name",
+	    cell: "string" 
+	  }, {
+	    name: "lastName",
+	    label: "Last Name",
+	    cell: "string" 
+ 	  }, {
+		    name: "hw1",
+		    label: "HW #1",
+		    cell: "number" 
+	  }, {
+		    name: "hw2",
+		    label: "HW #2",
+		    cell: "number" 
+	  }, {
+		    name: "hw3",
+		    label: "HW #3",
+		    cell: "number" 
+	  }, {
+		    name: "hw4",
+		    label: "HW #4",
+		    cell: "number" 
+	  }, {
+		    name: "hw5",
+		    label: "HW #5",
+		    cell: "number" 
+	  }, {
+		    name: "midterm",
+		    label: "Midterm Exam",
+		    cell: "number" 
+	  }, {
+		    name: "thefinal",
+		    label: "Final Exam",
+		    cell: "number" 
+	  }, {
+		    name: "participation",
+		    label: "Participation",
+		    cell: "number"  
+	  }, {
+		    name: "---",
+		    label: "Update",
+		    editable: false,
+		    cell: DeleteCell
+	}];
+
+	// Initialize a new Grid instance
+	var grid = new Backgrid.Grid({
+	  columns: columns,
+	  collection: territories
+	});
+
+	// Render the grid and attach the root to your HTML document
+	$("#backgrid-example").append(grid.render().el);
+
+	// Fetch some countries from the url
+	territories.fetch({reset: true});
+  
+  </script>
+
+
+</html>

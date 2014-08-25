@@ -22,7 +22,7 @@ public class Account implements java.io.Serializable {
 	@JsonIgnore
 	private String password;
 
-	private String role = "ROLE_USER";
+	private String role = "ROLE_ADMIN";
 
 
     protected Account() {
