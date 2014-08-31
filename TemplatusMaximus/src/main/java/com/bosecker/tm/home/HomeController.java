@@ -20,6 +20,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.bosecker.tm.account.Account;
 import com.bosecker.tm.account.AccountRepository;
 import com.bosecker.tm.account.TmStudent;
 import com.bosecker.tm.account.TmStudentRepository;
@@ -29,24 +30,47 @@ import com.bosecker.tm.signup.SignupForm;
 public class HomeController {
 
 	private TmStudentRepository tmStudentRepository;
+	
+	private AccountRepository accountRepository;
 
     @Autowired
-    public HomeController(TmStudentRepository tmStudentRepository) {
+    public HomeController(TmStudentRepository tmStudentRepository, AccountRepository accountRepository) {
         this.tmStudentRepository = tmStudentRepository;
+        this.accountRepository = accountRepository;
     }
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String index(Principal principal) {
+	public String index(Principal principal, Model model) {
+		
+		Account account = accountRepository.findByEmail(principal.getName());
+		TmStudent tmStudent = tmStudentRepository.findTmStudentById(account.getId());
+		if ( tmStudent != null ){
+		model.addAttribute("user", tmStudent);
+		}
 		return principal != null ? "home/homeUserSignedIn" : "home/homeNotSignedIn";
 	}
 	
 	@RequestMapping(value = "/user", method = RequestMethod.GET)
-	public String indexUser(Principal principal) {
+	public String indexUser(Principal principal, Model model) {
+		
+		Account account = accountRepository.findByEmail(principal.getName());
+		TmStudent tmStudent = tmStudentRepository.findTmStudentById(account.getId());
+		if ( tmStudent != null )
+		{
+		model.addAttribute("user", tmStudent);
+		}
 		return principal != null ? "home/homeUserSignedIn" : "home/homeNotSignedIn";
 	}
 	
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
-	public String indexAdmin(Principal principal) {
+	public String indexAdmin(Principal principal, Model model) {
+		
+		Account account = accountRepository.findByEmail(principal.getName());
+		TmStudent tmStudent = tmStudentRepository.findTmStudentById(account.getId());
+		
+		if ( tmStudent != null ){
+			model.addAttribute("user", tmStudent);
+		}
 		return principal != null ? "home/homeAdminSignedIn" : "home/homeNotSignedIn";
 	}
 	

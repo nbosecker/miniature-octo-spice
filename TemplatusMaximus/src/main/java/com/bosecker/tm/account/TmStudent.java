@@ -275,4 +275,33 @@ public class TmStudent implements java.io.Serializable {
 		this.badge6 = badge6;
 	}
 	
+	
+	public boolean isHealth40() {
+		return this.participation>35 && this.participation<=40;
+	}
+	public boolean isHealth35() {
+		return this.participation>30 && this.participation<=35;
+	}
+	public boolean isHealth30() {
+		return this.participation>25 && this.participation<=30;
+	}
+	public boolean isHealth25() {
+		return this.participation>20 && this.participation<=25;
+	}
+	public boolean isHealth20() {
+		return this.participation>15 && this.participation<=20;
+	}
+	public boolean isHealth15() {
+		return this.participation>10 && this.participation<=15;
+	}
+	public boolean isHealth10() {
+		return this.participation>5 && this.participation<=10;
+	}
+	public boolean isHealth5() {
+		return this.participation>0 && this.participation<=5;
+	}
+	public boolean isHealth0() {
+		return this.participation<=0;
+	}
+	
 }

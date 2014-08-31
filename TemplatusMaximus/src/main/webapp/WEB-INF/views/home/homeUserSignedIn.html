@@ -16,17 +16,98 @@
         <!-- /* The message code is returned from the @Controller */ -->
         <div th:replace="fragments/alert :: alert (type=${#strings.toLowerCase(message.type)}, message=#{${message.message}(${#authentication.name})})">&nbsp;</div>
     </th:block>
-    <p>
-        Welcome to Templatus Maximus, you user!
-        
-        <img src="resources/images/BlueBeeBadge.png" class="img-responsive" alt="Responsive image" height="50" width="50"/>
-        <img src="resources/images/YellowBeeBadge.png" class="img-responsive" alt="Responsive image" height="50" width="50"/>
-        <img src="resources/images/GiftBadge.png" class="img-responsive" alt="Responsive image" height="50" width="50"/>
-        <img src="resources/images/GiftsBadge.png" class="img-responsive" alt="Responsive image" height="50" width="50"/>
-        <img src="resources/images/StarBadge.png" class="img-responsive" alt="Responsive image" height="50" width="50"/>
-        <img src="resources/images/QuestionBadge.png" class="img-responsive" alt="Responsive image" height="50" width="50"/>
-        <img src="resources/images/PlayerAvatar.png" class="img-responsive" alt="Responsive image" height="50" width="50"/>
-    </p>
+    
+    <H2>Welcome back, <span th:text="${user.firstName}">First </span> <span th:text="${user.lastName}">Last</span>!</H2>
+    
+    <div style="margin: 25px 0px 0px 25px;">
+	    
+	    <div style="float: left;">
+		    <div style="margin: 5px 0px 0px 0px;" th:if="${user.badge1 != true}">
+		    	<img src="resources/images/BlueBeeBadge.png" class="img-responsive" alt="Responsive image" height="50" width="50"/>
+		    </div>
+		    <div th:if="${user.badge2 != true}">
+		    	<img src="resources/images/YellowBeeBadge.png" class="img-responsive" alt="Responsive image" height="50" width="50"/>
+		    </div>
+		    <div style="margin: 5px 0px 0px 0px;" th:if="${user.badge3 != false}">
+		    	<img src="resources/images/GiftBadge.png" class="img-responsive" alt="Responsive image" height="50" width="50"/>
+		    </div>
+	    </div>
+	    
+	    <div style="float: left; margin: 0px 0px 0px 15px;" > 
+	      <img src="resources/images/PlayerAvatar.png" class="img-responsive" alt="Responsive image" height="75" width="75"/>
+	    </div>
+	    
+	    <div style="float: left; margin: 20px 0px 0px 0px;" th:if="${user.isHealth40()}">
+		    <img src="resources/images/Health40.png" class="img-responsive" alt="Responsive image" height="150" width="100"/>
+		</div>
+	    <div style="float: left; margin: 20px 0px 0px 0px;" th:if="${user.isHealth35()}">
+		    <img src="resources/images/Health35.png" class="img-responsive" alt="Responsive image" height="150" width="100"/>
+		</div>
+	    <div style="float: left; margin: 20px 0px 0px 0px;" th:if="${user.isHealth30()}">
+		    <img src="resources/images/Health30.png" class="img-responsive" alt="Responsive image" height="150" width="100"/>
+		</div>
+	    <div style="float: left; margin: 20px 0px 0px 0px;" th:if="${user.isHealth25()}">
+		    <img src="resources/images/Health25.png" class="img-responsive" alt="Responsive image" height="150" width="100"/>
+		</div>
+	    <div style="float: left; margin: 20px 0px 0px 0px;" th:if="${user.isHealth20()}">
+		    <img src="resources/images/Health20.png" class="img-responsive" alt="Responsive image" height="150" width="100"/>
+		</div>
+	    <div style="float: left; margin: 20px 0px 0px 0px;" th:if="${user.isHealth15()}">
+		    <img src="resources/images/Health15.png" class="img-responsive" alt="Responsive image" height="150" width="100"/>
+		</div>
+	    <div style="float: left; margin: 20px 0px 0px 0px;" th:if="${user.isHealth10()}">
+		    <img src="resources/images/Health10.png" class="img-responsive" alt="Responsive image" height="150" width="100"/>
+		</div>
+	    <div style="float: left; margin: 20px 0px 0px 0px;" th:if="${user.isHealth5()}">
+		    <img src="resources/images/Health5.png" class="img-responsive" alt="Responsive image" height="150" width="100"/>
+		</div>
+	    <div style="float: left; margin: 20px 0px 0px 0px;" th:if="${user.isHealth0()}">
+		    <img src="resources/images/Health0.png" class="img-responsive" alt="Responsive image" height="150" width="100"/>
+		</div>
+	    
+	    <div style="float: left; margin: 0px 0px 0px 10px;">
+		    <div style="margin: 5px 0px 0px 0px;" th:if="${user.badge4 != true}">
+		    	<img src="resources/images/GiftsBadge.png" class="img-responsive" alt="Responsive image" height="50" width="50"/>
+		    </div>
+		    <div th:if="${user.badge5 != true}">
+		    	<img src="resources/images/QuestionBadge.png" class="img-responsive" alt="Responsive image" height="50" width="50"/>
+		    </div>
+		    <div th:if="${user.badge6 != true}">
+		    	<img src="resources/images/StarBadge.png" class="img-responsive" alt="Responsive image" height="50" width="50"/>
+		    </div>
+	    </div>
+    </div>
+    
+<div class="CSSTableGenerator" style="margin-left:auto; margin-right:0;">
+<table>
+  <tr><td>Badge</td><td>Meaning</td></tr>
+  <tr>
+    <td><img style="float: right; margin: 0px 35px 0px 0px;" src="resources/images/BlueBeeBadge.png" class="img-responsive" alt="Responsive image" height="50" width="50"/></td>
+    <td>Blue Bee Badge Info Here</td> 
+ </tr>
+  <tr>
+    <td><img style="float: right; margin: 0px 35px 0px 0px;" src="resources/images/YellowBeeBadge.png" class="img-responsive" alt="Responsive image" height="50" width="50"/></td>
+    <td>Yellow Bee Badge Info Here</td> 
+  </tr>
+  <tr>
+    <td><img style="float: right; margin: 0px 35px 0px 0px;" src="resources/images/GiftBadge.png" class="img-responsive" alt="Responsive image" height="50" width="50"/></td>
+    <td>Gift Badge Info Here</td> 
+  </tr>
+  <tr>
+    <td><img style="float: right; margin: 0px 35px 0px 0px;" src="resources/images/GiftsBadge.png" class="img-responsive" alt="Responsive image" height="50" width="50"/></td>
+    <td>Gifts Badge Info Here</td> 
+  </tr>
+  <tr>
+    <td><img style="float: right; margin: 0px 35px 0px 0px;" src="resources/images/StarBadge.png" class="img-responsive" alt="Responsive image" height="50" width="50"/></td>
+    <td>Star Badge Info Here</td> 
+  </tr>
+  <tr>
+    <td><img style="float: right; margin: 0px 35px 0px 0px;" src="resources/images/QuestionBadge.png" class="img-responsive" alt="Responsive image" height="50" width="50"/></td>
+    <td>Question Badge Info Here</td> 
+  </tr>
+</table>
+</div>        
+    
 </div>
 <div th:replace="fragments/footer :: footer">&nbsp;</div>
 </body>
