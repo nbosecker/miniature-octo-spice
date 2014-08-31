@@ -12,7 +12,10 @@ import java.util.Calendar;
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "tm_student")
+@NamedQuery(name = TmStudent.FIND_ALL, query = "select tm from TmStudent tm")
 public class TmStudent implements java.io.Serializable {
+
+	public static final String FIND_ALL = "TmStudent.findAll";
 
 	@Id
 	@GeneratedValue
@@ -23,36 +26,57 @@ public class TmStudent implements java.io.Serializable {
     private Account account;
 	
 	@Column(name="hw1")
-	private int hw1 = 0;
+	private double hw1 = 0.0;
 	
 	@Column (name="hw2")
-	private int hw2 = 0;
+	private double hw2 = 0.0;
 	
 	@Column (name="hw3")
-	private int hw3 = 0;
+	private double hw3 = 0.0;
 	
 	@Column (name="hw4")
-	private int hw4 = 0;
+	private double hw4 = 0.0;
 	
 	@Column (name="hw5")
-	private int hw5 = 0;
+	private double hw5 = 0.0;
 	
 	@Column (name="midterm")
-	private int midterm = 0;
+	private double midterm = 0.0;
 	
 	@Column (name="thefinal")
-	private int thefinal = 0;
+	private double thefinal = 0.0;
 	
 	@Column (name="participation")
-	private int participation = 40;
+	private double participation = 40.0;
 	
-	@Column
+	@Column (name="badge1")
+	private boolean badge1 = false;
+	
+	@Column (name="badge2")
+	private boolean badge2 = false;
+	
+	@Column (name="badge3")
+	private boolean badge3= false;
+	
+	@Column (name="badge4")
+	private boolean badge4 = false;
+	
+	@Column (name="badge5")
+	private boolean badge5 = false;
+	
+	@Column (name="badge6")
+	private boolean badge6 = false;
+		
+	@Column (name="firstName")
 	private String firstName;
 	
-	@Column
+	@Column (name="lastName")
 	private String lastName;
 	
-	@Column(unique = true)
+	@Column (name="finalGrade")
+	private double finalGrade = 0.0;
+	
+	@Column(name="characterName", unique = true)
 	private String characterName;
 	
 	@CreatedDate
@@ -64,7 +88,7 @@ public class TmStudent implements java.io.Serializable {
 	private Date updatedAt;
 
 	
-	protected TmStudent() {
+	public TmStudent() {
 
 	}
 	
@@ -74,7 +98,7 @@ public class TmStudent implements java.io.Serializable {
 		this.createdAt = new Date(Calendar.getInstance().getTimeInMillis());
 		this.updatedAt = new Date(Calendar.getInstance().getTimeInMillis());
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -91,6 +115,110 @@ public class TmStudent implements java.io.Serializable {
 		this.account = account;
 	}
 
+	public double getHw1() {
+		return hw1;
+	}
+
+	public void setHw1(double hw1) {
+		this.hw1 = hw1;
+	}
+
+	public double getHw2() {
+		return hw2;
+	}
+
+	public void setHw2(double hw2) {
+		this.hw2 = hw2;
+	}
+
+	public double getHw3() {
+		return hw3;
+	}
+
+	public void setHw3(double hw3) {
+		this.hw3 = hw3;
+	}
+
+	public double getHw4() {
+		return hw4;
+	}
+
+	public void setHw4(double hw4) {
+		this.hw4 = hw4;
+	}
+
+	public double getHw5() {
+		return hw5;
+	}
+
+	public void setHw5(double hw5) {
+		this.hw5 = hw5;
+	}
+
+	public double getMidterm() {
+		return midterm;
+	}
+
+	public void setMidterm(double midterm) {
+		this.midterm = midterm;
+	}
+
+	public double getThefinal() {
+		return thefinal;
+	}
+
+	public void setThefinal(double thefinal) {
+		this.thefinal = thefinal;
+	}
+
+	public double getParticipation() {
+		return participation;
+	}
+
+	public void setParticipation(double participation) {
+		this.participation = participation;
+	}
+
+	public boolean isBadge1() {
+		return badge1;
+	}
+
+	public void setBadge1(boolean badge1) {
+		this.badge1 = badge1;
+	}
+
+	public boolean isBadge2() {
+		return badge2;
+	}
+
+	public void setBadge2(boolean badge2) {
+		this.badge2 = badge2;
+	}
+
+	public boolean isBadge3() {
+		return badge3;
+	}
+
+	public void setBadge3(boolean badge3) {
+		this.badge3 = badge3;
+	}
+
+	public boolean isBadge4() {
+		return badge4;
+	}
+
+	public void setBadge4(boolean badge4) {
+		this.badge4 = badge4;
+	}
+
+	public boolean isBadge5() {
+		return badge5;
+	}
+
+	public void setBadge5(boolean badge5) {
+		this.badge5 = badge5;
+	}
+
 	public String getFirstName() {
 		return firstName;
 	}
@@ -105,6 +233,14 @@ public class TmStudent implements java.io.Serializable {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+
+	public double getFinalGrade() {
+		return finalGrade;
+	}
+
+	public void setFinalGrade(double finalGrade) {
+		this.finalGrade = finalGrade;
 	}
 
 	public String getCharacterName() {
@@ -131,68 +267,12 @@ public class TmStudent implements java.io.Serializable {
 		this.updatedAt = updatedAt;
 	}
 
-	public Integer getHw1() {
-		return hw1;
+	public boolean isBadge6() {
+		return badge6;
 	}
 
-	public void setHw1(Integer hw1) {
-		this.hw1 = hw1;
+	public void setBadge6(boolean badge6) {
+		this.badge6 = badge6;
 	}
-
-	public Integer getHw2() {
-		return hw2;
-	}
-
-	public void setHw2(Integer hw2) {
-		this.hw2 = hw2;
-	}
-
-	public Integer getHw3() {
-		return hw3;
-	}
-
-	public void setHw3(Integer hw3) {
-		this.hw3 = hw3;
-	}
-
-	public Integer getHw4() {
-		return hw4;
-	}
-
-	public void setHw4(Integer hw4) {
-		this.hw4 = hw4;
-	}
-
-	public Integer getHw5() {
-		return hw5;
-	}
-
-	public void setHw5(Integer hw5) {
-		this.hw5 = hw5;
-	}
-
-	public Integer getMidterm() {
-		return midterm;
-	}
-
-	public void setMidterm(Integer midterm) {
-		this.midterm = midterm;
-	}
-
-	public Integer getThefinal() {
-		return thefinal;
-	}
-
-	public void setThefinal(Integer thefinal) {
-		this.thefinal = thefinal;
-	}
-
-	public Integer getParticipation() {
-		return participation;
-	}
-
-	public void setParticipation(Integer participation) {
-		this.participation = participation;
-	}
-
+	
 }

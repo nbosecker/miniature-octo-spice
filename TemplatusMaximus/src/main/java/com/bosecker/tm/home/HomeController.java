@@ -4,18 +4,37 @@ import java.io.File;
 import java.io.IOException;
 import java.security.Principal;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import javax.validation.Valid;
 
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.bosecker.tm.account.AccountRepository;
+import com.bosecker.tm.account.TmStudent;
+import com.bosecker.tm.account.TmStudentRepository;
+import com.bosecker.tm.signup.SignupForm;
 
 @Controller
 public class HomeController {
-	
+
+	private TmStudentRepository tmStudentRepository;
+
+    @Autowired
+    public HomeController(TmStudentRepository tmStudentRepository) {
+        this.tmStudentRepository = tmStudentRepository;
+    }
+
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(Principal principal) {
 		return principal != null ? "home/homeUserSignedIn" : "home/homeNotSignedIn";
@@ -31,32 +50,15 @@ public class HomeController {
 		return principal != null ? "home/homeAdminSignedIn" : "home/homeNotSignedIn";
 	}
 	
-	@RequestMapping(value = "/admin/updateuser", method = RequestMethod.GET)
-	public String updateUser() {
-		return "home/updateuser";
-	}
-	
-	@RequestMapping(value = "/examples/territories.json", method = RequestMethod.GET)
+	@RequestMapping(value = "/students.json", method = RequestMethod.GET)
 	public @ResponseBody String exampleTerritories(){
 				
-		Map aMap = new HashMap();
-		aMap.put("alias", "Ninja_Joe");
-		aMap.put("firstName", "Joe");
-		aMap.put("lastName", "Student");
-		aMap.put("hw1", 93);
-		aMap.put("hw2", 94);
-		aMap.put("hw3", 95);
-		aMap.put("hw4", 96);
-		aMap.put("hw5", 97);
-		aMap.put("midterm", 98);
-		aMap.put("thefinal", 99);
-		aMap.put("participation", 40);
-		aMap.put("id", 1);
+		List<TmStudent> studentList = tmStudentRepository.findAll();
 				
 		ObjectMapper objMapper = new ObjectMapper(); // can reuse, share globally
 		String mapAsJson = null;
 		try {
-			mapAsJson = objMapper.writeValueAsString(aMap);
+			mapAsJson = objMapper.writeValueAsString(studentList);
 		} catch (JsonGenerationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -75,4 +77,5 @@ public class HomeController {
 	public @ResponseBody String nancyTest(){
 		return null;
 	}
+
 }

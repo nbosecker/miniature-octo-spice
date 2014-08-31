@@ -10,7 +10,149 @@
 </head>
 <body>
 <div th:replace="fragments/header :: header">&nbsp;</div>
-<H2>HEY DUDE PUT AN UPDATE FORM HERE TO UPDATE THE USER</H2>
+
+
+<form class="form-narrow form-horizontal" method="post" th:action="@{/updateuser}" th:object="${updateUserForm}">
+    <!-- /* Show general error message when form contains errors */ -->
+    <th:block th:if="${#fields.hasErrors('${updateUserForm.*}')}">
+        <div th:replace="fragments/alert :: alert (type='danger', message='Form contains errors. Please try again.')">Alert</div>
+    </th:block>
+    <fieldset>
+        <legend>Update</legend>
+        <input type="text" hidden="hidden" data-th-value="*{id}" data-th-field="*{id}" />
+       <div class="form-group" th:classappend="${#fields.hasErrors('firstName')}? 'has-error'">
+            <label for="firstName" class="col-lg-2 control-label">First Name</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="firstName" placeholder="firstName" th:value="*{firstName}" th:field="*{firstName}"/>
+                <span class="help-block" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Incorrect first name</span>
+            </div>
+        </div>
+        <div class="form-group" th:classappend="${#fields.hasErrors('lastName')}? 'has-error'">
+            <label for="lastName" class="col-lg-2 control-label">Last Name</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="lastName" placeholder="lastName" th:value="*{lastName}" th:field="*{lastName}"/>
+                <span class="help-block" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Incorrect last name</span>
+            </div>
+        </div>
+        <div class="form-group" th:classappend="${#fields.hasErrors('characterName')}? 'has-error'">
+            <label for="characterName" class="col-lg-2 control-label">Character Name</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="characterName" placeholder="characterName" th:value="*{characterName}" th:field="*{characterName}"/>
+                <span class="help-block" th:if="${#fields.hasErrors('characterName')}" th:errors="*{characterName}">Incorrect character name</span>
+            </div>
+        </div>
+        
+        <div class="form-group" th:classappend="${#fields.hasErrors('hw1')}? 'has-error'">
+            <label for="hw1" class="col-lg-2 control-label">HW #1</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="hw1" placeholder="hw1" th:value="*{hw1}" th:field="*{hw1}"/>
+                <span class="help-block" th:if="${#fields.hasErrors('hw1')}" th:errors="*{hw1}">Incorrect hw1</span>
+            </div>
+        </div>
+        <div class="form-group" th:classappend="${#fields.hasErrors('hw2')}? 'has-error'">
+            <label for="hw2" class="col-lg-2 control-label">HW #2</label>
+            <div class="col-lg-10">
+                <input type="number" class="form-control" id="hw2" placeholder="hw2" th:value="*{hw2}" th:field="*{hw2}"/>
+                <span class="help-block" th:if="${#fields.hasErrors('hw2')}" th:errors="*{hw2}">Incorrect hw2</span>
+            </div>
+        </div>
+        <div class="form-group" th:classappend="${#fields.hasErrors('hw3')}? 'has-error'">
+            <label for="hw3" class="col-lg-2 control-label">HW #3</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="hw3" placeholder="hw3" th:value="*{hw3}" th:field="*{hw3}"/>
+                <span class="help-block" th:if="${#fields.hasErrors('hw3')}" th:errors="*{hw3}">Incorrect hw3</span>
+            </div>
+        </div>
+        <div class="form-group" th:classappend="${#fields.hasErrors('hw4')}? 'has-error'">
+            <label for="hw4" class="col-lg-2 control-label">HW #4</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="hw4" placeholder="hw4" th:value="*{hw4}" th:field="*{hw4}"/>
+                <span class="help-block" th:if="${#fields.hasErrors('hw4')}" th:errors="*{hw4}">Incorrect hw1</span>
+            </div>
+        </div>
+        <div class="form-group" th:classappend="${#fields.hasErrors('hw5')}? 'has-error'">
+            <label for="hw5" class="col-lg-2 control-label">HW #5</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="hw5" placeholder="hw5" th:value="*{hw5}" th:field="*{hw5}"/>
+                <span class="help-block" th:if="${#fields.hasErrors('hw5')}" th:errors="*{hw5}">Incorrect hw5</span>
+            </div>
+        </div>
+        
+        <div class="form-group" th:classappend="${#fields.hasErrors('hasBadge1')}? 'has-error'">
+            <label for="hasBadge1" class="col-lg-2 control-label">Has Badge #1</label>
+            <div class="col-lg-10">
+                <input type="checkbox" class="form-control" id="hasBadge1" placeholder="hasBadge1" th:value="*{hasBadge1}" th:field="*{hasBadge1}"/>
+                <span class="help-block" th:if="${#fields.hasErrors('hasBadge1')}" th:errors="*{hasBadge1}">Incorrect badge 1</span>
+            </div>
+        </div>
+        <div class="form-group" th:classappend="${#fields.hasErrors('hasBadge2')}? 'has-error'">
+            <label for="hasBadge2" class="col-lg-2 control-label">Has Badge #2</label>
+            <div class="col-lg-10">
+                <input type="checkbox" class="form-control" id="hasBadge2" placeholder="hasBadge2" th:value="*{hasBadge2}" th:field="*{hasBadge2}"/>
+                <span class="help-block" th:if="${#fields.hasErrors('hasBadge2')}" th:errors="*{hasBadge2}">Incorrect badge 2</span>
+            </div>
+        </div>
+        <div class="form-group" th:classappend="${#fields.hasErrors('hasBadge3')}? 'has-error'">
+            <label for="hasBadge3" class="col-lg-2 control-label">Has Badge #3</label>
+            <div class="col-lg-10">
+                <input type="checkbox" class="form-control" id="hasBadge3" placeholder="hasBadge3" th:value="*{hasBadge3}" th:field="*{hasBadge3}"/>
+                <span class="help-block" th:if="${#fields.hasErrors('hasBadge3')}" th:errors="*{hasBadge3}">Incorrect badge 3</span>
+            </div>
+        </div>
+        <div class="form-group" th:classappend="${#fields.hasErrors('hasBadge4')}? 'has-error'">
+            <label for="hasBadge4" class="col-lg-2 control-label">Has Badge #4</label>
+            <div class="col-lg-10">
+                <input type="checkbox" class="form-control" id="hasBadge4" placeholder="hasBadge4" th:value="*{hasBadge4}" th:field="*{hasBadge4}"/>
+                <span class="help-block" th:if="${#fields.hasErrors('hasBadge4')}" th:errors="*{hasBadge4}">Incorrect badge 4</span>
+            </div>
+        </div>
+        <div class="form-group" th:classappend="${#fields.hasErrors('hasBadge5')}? 'has-error'">
+            <label for="hasBadge5" class="col-lg-2 control-label">Has Badge #5</label>
+            <div class="col-lg-10">
+                <input type="checkbox" class="form-control" id="hasBadge5" placeholder="hasBadge5" th:value="*{hasBadge5}" th:field="*{hasBadge5}"/>
+                <span class="help-block" th:if="${#fields.hasErrors('hasBadge5')}" th:errors="*{hasBadge1=5}">Incorrect badge 5</span>
+            </div>
+        </div>
+        <div class="form-group" th:classappend="${#fields.hasErrors('hasBadge6')}? 'has-error'">
+            <label for="hasBadge6" class="col-lg-2 control-label">Has Badge #6</label>
+            <div class="col-lg-10">
+                <input type="checkbox" class="form-control" id="hasBadge6" placeholder="hasBadge6" th:value="*{hasBadge6}" th:field="*{hasBadge6}"/>
+                <span class="help-block" th:if="${#fields.hasErrors('hasBadge6')}" th:errors="*{hasBadge6}">Incorrect badge 6</span>
+            </div>
+        </div>
+        
+        <div class="form-group" th:classappend="${#fields.hasErrors('midtermExam')}? 'has-error'">
+            <label for="midtermExam" class="col-lg-2 control-label">Midterm Exam</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="midtermExam" placeholder="midtermExam" th:value="*{midtermExam}" th:field="*{midtermExam}"/>
+                <span class="help-block" th:if="${#fields.hasErrors('midtermExam')}" th:errors="*{midtermExam}">Incorrect midtermExam</span>
+            </div>
+        </div>
+        <div class="form-group" th:classappend="${#fields.hasErrors('finalExam')}? 'has-error'">
+            <label for="finalExam" class="col-lg-2 control-label">Final Exam</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="finalExam" placeholder="finalExam" th:value="*{finalExam}" th:field="*{finalExam}"/>
+                <span class="help-block" th:if="${#fields.hasErrors('finalExam')}" th:errors="*{finalExam}">Incorrect finalExam</span>
+            </div>
+        </div>
+        
+         <div class="form-group" th:classappend="${#fields.hasErrors('participation')}? 'has-error'">
+            <label for="participation" class="col-lg-2 control-label">Participation</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="participation" placeholder="participation" th:value="*{participation}" th:field="*{participation}"/>
+                <span class="help-block" th:if="${#fields.hasErrors('participation')}" th:errors="*{participation}">Incorrect participation</span>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="col-lg-offset-2 col-lg-10">
+                <button type="submit" class="btn btn-default">Update</button>
+            </div>
+        </div>
+    </fieldset>
+</form>
+
+
 <div th:replace="fragments/footer :: footer">&nbsp;</div>
 </body>
 </html>

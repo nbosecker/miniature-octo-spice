@@ -34,29 +34,36 @@
 
   var Territories = Backbone.Collection.extend({
     model: Territory,
-    url: "examples/territories.json"
+    url: "students.json"
   });
 
   var territories = new Territories(); 
   
   var DeleteCell = Backgrid.UriCell.extend({
 	    template: _.template('<button><a>Update</a></button>'),
-	    events: {
-	      //"click": "deleteRow"
+/* 	    events: {
+	      "click": "updateRow"
 	    },
-	    deleteRow: function (e) {
+	    updateRow: function (e) {
 	      console.log("Hello");
+	      //Backbone.trigger("rowclicked", this.model);
 	      e.preventDefault();
-//	      this.model.collection.remove(this.model);
-	    },
+	    }, */
 	    render: function () {
-          this.constructor.__super__.render.apply(this, arguments);
+	  	 // debugger;
+	  	  this.constructor.__super__.render.apply(this, arguments);
 	      this.$el.html(this.template());
-	      this.$("a").attr({href: "admin/updateuser"});
-	      //this.delegateEvents();
+	      this.$("a").attr({href: "updateuser/"+ this.model.attributes.id });//"admin/" + this.model.attributes.id  + "/updateuser"});
 	      return this;
 	    }
 	});
+  
+  /* Backbone.on("rowclicked", function (model) {
+	  debugger;
+	  console.log("BLAH");
+	  var test = "admin/" + model.attributes.id  + "/updateuser";
+      this.$("a").attr({href: "admin/" + model.attributes.id  + "/updateuser"});
+	 }); */
 
   var columns = [{
 	    name: "id", // The key of the model attribute
@@ -67,49 +74,94 @@
 	      orderSeparator: ''
 	    })
 	  }, {
-	    name: "alias",
-	    label: "Alias",
-	    // The cell type can be a reference of a Backgrid.Cell subclass, any Backgrid.Cell subclass instances like *id* above, or a string
-	    cell: "string" // This is converted to "StringCell" and a corresponding class in the Backgrid package namespace is looked up
-	  }, {
 	    name: "firstName",
 	    label: "First Name",
+	    editable: false,
 	    cell: "string" 
 	  }, {
 	    name: "lastName",
 	    label: "Last Name",
+	    editable: false,
 	    cell: "string" 
+	  }, {
+		    name: "characterName",
+		    label: "Character Name",
+		    editable: false,
+		    cell: "string" 
  	  }, {
 		    name: "hw1",
 		    label: "HW #1",
+		    editable: false,
 		    cell: "number" 
 	  }, {
 		    name: "hw2",
 		    label: "HW #2",
+		    editable: false,
 		    cell: "number" 
 	  }, {
 		    name: "hw3",
 		    label: "HW #3",
+		    editable: false,
 		    cell: "number" 
 	  }, {
 		    name: "hw4",
 		    label: "HW #4",
+		    editable: false,
 		    cell: "number" 
 	  }, {
 		    name: "hw5",
 		    label: "HW #5",
+		    editable: false,
 		    cell: "number" 
+	  }, {
+		    name: "badge1",
+		    label: "Has Badge 1",
+		    editable: false,
+		    cell: "boolean" 
+	  }, {
+		    name: "badge2",
+		    label: "Has Badge 2",
+		    editable: false,
+		    cell: "boolean" 
+	  }, {
+		    name: "badge3",
+		    label: "Has Badge 3",
+		    editable: false,
+		    cell: "boolean" 
+	  }, {
+		    name: "badge4",
+		    label: "Has Badge 4",
+		    editable: false,
+		    cell: "boolean" 
+	  }, {
+		    name: "badge5",
+		    label: "Has Badge 5",
+		    editable: false,
+		    cell: "boolean" 
+	  }, {
+		    name: "badge6",
+		    label: "Has Badge 6",
+		    editable: false,
+		    cell: "boolean" 
 	  }, {
 		    name: "midterm",
 		    label: "Midterm Exam",
+		    editable: false,
 		    cell: "number" 
 	  }, {
 		    name: "thefinal",
 		    label: "Final Exam",
+		    editable: false,
+		    cell: "number" 
+	  }, {
+		    name: "finalGrade",
+		    label: "Final Grade",
+		    editable: false,
 		    cell: "number" 
 	  }, {
 		    name: "participation",
 		    label: "Participation",
+		    editable: false,
 		    cell: "number"  
 	  }, {
 		    name: "---",
