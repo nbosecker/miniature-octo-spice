@@ -91,6 +91,6 @@ public class UpdateUserController {
 		
 		tmStudentRepository.save(tmStudent);
 		
-		return "redirect:/admin";
+		return "redirect:/";
 	}
 }

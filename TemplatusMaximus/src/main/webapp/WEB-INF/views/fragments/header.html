@@ -4,6 +4,7 @@
     <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
 </head>
 <body>
+
 <div class="navbar navbar-inverse navbar-fixed-top" th:fragment="header">
     <div class="container">
         <div class="navbar-header">
@@ -16,9 +17,9 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#" th:href="@{/}">Home</a></li>
-                <li th:if="${#authorization.expression('isAuthenticated()')}"><a href="#leaderboard">Leaderboard</a></li>
-                <li th:if="${#authorization.expression('isAuthenticated()')}"><a href="#narrative">Narrative</a></li>
+                <li class="active myitem1"><a href="#" class="myitem" th:href="@{/}">Home</a></li>
+                <li class="myitem2" th:if="${#authorization.expression('isAuthenticated()')}"><a class="myitem" href="/leaderboard" th:href="@{/leaderboard}" th:action="@{/leaderboard}">Leaderboard</a></li>
+                <li class="myitem3" th:if="${#authorization.expression('isAuthenticated()')}"><a class="myitem" href="/narrative" th:action="@{/narrative}" th:href="@{/narrative}">Narrative</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li th:if="${#authorization.expression('!isAuthenticated()')}">

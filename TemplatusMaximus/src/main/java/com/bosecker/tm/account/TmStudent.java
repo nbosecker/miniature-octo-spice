@@ -313,4 +313,9 @@ public class TmStudent implements Comparable, java.io.Serializable {
 		
 		return 0;
 	}
+	
+	public boolean isAdmin()
+	{
+		return (this.account.getRole().equals("ROLE_ADMIN"));
+	}
 }

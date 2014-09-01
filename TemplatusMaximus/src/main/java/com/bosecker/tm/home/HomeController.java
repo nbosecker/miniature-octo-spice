@@ -43,37 +43,14 @@ public class HomeController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(Principal principal, Model model) {
-		
-		Account account = accountRepository.findByEmail(principal.getName());
-		TmStudent tmStudent = tmStudentRepository.findTmStudentById(account.getId());
-		if ( tmStudent != null ){
-		model.addAttribute("user", tmStudent);
+		if ( principal != null ) {
+			Account account = accountRepository.findByEmail(principal.getName());
+			TmStudent tmStudent = tmStudentRepository.findTmStudentById(account.getId());
+			if ( tmStudent != null ){
+				model.addAttribute("user", tmStudent);
+			}
 		}
-		return principal != null ? "home/homeUserSignedIn" : "home/homeNotSignedIn";
-	}
-	
-	@RequestMapping(value = "/user", method = RequestMethod.GET)
-	public String indexUser(Principal principal, Model model) {
-		
-		Account account = accountRepository.findByEmail(principal.getName());
-		TmStudent tmStudent = tmStudentRepository.findTmStudentById(account.getId());
-		if ( tmStudent != null )
-		{
-		model.addAttribute("user", tmStudent);
-		}
-		return principal != null ? "home/homeUserSignedIn" : "home/homeNotSignedIn";
-	}
-	
-	@RequestMapping(value = "/admin", method = RequestMethod.GET)
-	public String indexAdmin(Principal principal, Model model) {
-		
-		Account account = accountRepository.findByEmail(principal.getName());
-		TmStudent tmStudent = tmStudentRepository.findTmStudentById(account.getId());
-		
-		if ( tmStudent != null ){
-			model.addAttribute("user", tmStudent);
-		}
-		return principal != null ? "home/homeAdminSignedIn" : "home/homeNotSignedIn";
+		return principal != null ? "home/homeSignedIn" : "home/homeNotSignedIn";
 	}
 	
 	@RequestMapping(value = "/students.json", method = RequestMethod.GET)
@@ -99,11 +76,6 @@ public class HomeController {
 		return mapAsJson;
 	}
 	
-	@RequestMapping(value = "/examples/nancyuser", method = RequestMethod.GET)
-	public @ResponseBody String nancyTest(){
-		return null;
-	}
-
     @SuppressWarnings("unchecked")
 	@RequestMapping(value = "/leaderboard", method = RequestMethod.GET)
     public String leaderboard(Model model) {
