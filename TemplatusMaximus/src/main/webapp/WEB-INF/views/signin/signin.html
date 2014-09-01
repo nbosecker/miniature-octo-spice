@@ -12,6 +12,9 @@
     <th:block th:if="${param.error != null}">
         <div th:replace="fragments/alert :: alert (type='danger', message='Sign in error. Please try again.')">Alert</div>
     </th:block>
+    <th:block th:if="${confirmationMessage}">
+        <div th:replace="fragments/alert :: alert (type='success', message='Password successfully changed! Please sign in.')">Alert</div>
+    </th:block>
     <fieldset>
         <legend>Sign In To T-Max</legend>
         <div class="form-group">
@@ -26,20 +29,18 @@
                 <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="j_password" />
             </div>
         </div>
-        <div class="form-group">
-            <div class="col-lg-offset-2 col-lg-10">
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" name="_spring_security_remember_me" /> Remember me
-                    </label>
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
+         <div class="form-group">
             <div class="col-lg-offset-2 col-lg-10">
                 <button type="submit" class="btn btn-default">Sign in</button>
             </div>
         </div>
+        
+        <div class="form-group">
+            <div class="col-lg-offset-2 col-lg-10">
+                <p><a href="reset" th:href="@{/reset}">Reset Password</a></p>
+            </div>
+        </div>
+        
     </fieldset>
 </form>
 <div th:replace="fragments/footer :: footer">&nbsp;</div>

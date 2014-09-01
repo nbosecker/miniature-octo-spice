@@ -19,7 +19,7 @@
             <ul class="nav navbar-nav">
                 <li class="active myitem1"><a href="#" class="myitem" th:href="@{/}">Home</a></li>
                 <li class="myitem2" th:if="${#authorization.expression('isAuthenticated()')}"><a class="myitem" href="/leaderboard" th:href="@{/leaderboard}" th:action="@{/leaderboard}">Leaderboard</a></li>
-                <li class="myitem3" th:if="${#authorization.expression('isAuthenticated()')}"><a class="myitem" href="/narrative" th:action="@{/narrative}" th:href="@{/narrative}">Narrative</a></li>
+                <li class="myitem3" th:if="${#authorization.expression('isAuthenticated()')}"><a class="myitem" href="/narrative1" th:action="@{/narrative1}" th:href="@{/narrative1}">Narrative 1</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li th:if="${#authorization.expression('!isAuthenticated()')}">

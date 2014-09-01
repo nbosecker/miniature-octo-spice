@@ -121,4 +121,13 @@ public class HomeController {
 		
     	return "home/leaderboard";
     }
+    
+    @SuppressWarnings("unchecked")
+	@RequestMapping(value = "/narrative1", method = RequestMethod.GET)
+    public String narrative(Principal principal, Model model) {
+		
+    	
+		
+    	return "home/narrative1";
+    }
 }
