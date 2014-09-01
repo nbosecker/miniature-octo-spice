@@ -24,6 +24,11 @@ public class UserService implements UserDetailsService {
 		accountRepository.save(new Account("jack", "jack", "ROLE_USER"), new TmStudent("Jack", "User"));
 		accountRepository.save(new Account("lisa", "lisa", "ROLE_ADMIN"), new TmStudent("Nancy", "Admin"));
 		
+		accountRepository.save(new Account("joetest", "joetest", "ROLE_TEST_USER"), new TmStudent("JoeTest", "User"));
+		accountRepository.save(new Account("janetest", "janetest", "ROLE_TEST_USER"), new TmStudent("JaneTest", "User"));
+		accountRepository.save(new Account("johntest", "johntest", "ROLE_TEST_USER"), new TmStudent("JohnTest", "User"));
+		accountRepository.save(new Account("jacktest", "jacktest", "ROLE_TEST_USER"), new TmStudent("JackTest", "User"));
+		accountRepository.save(new Account("admin", "admin", "ROLE_TEST_ADMIN"), new TmStudent("Lisa", "Admin"));
 	}
 	
 	@Override

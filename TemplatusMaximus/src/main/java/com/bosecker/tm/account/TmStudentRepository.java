@@ -23,13 +23,24 @@ public class TmStudentRepository {
 	
 	public List<TmStudent> findAll() {
 		try {
-			return entityManager.createNamedQuery(TmStudent.FIND_ALL, TmStudent.class)
+			return entityManager.createQuery("SELECT t from TmStudent t where t.account.role = :role")
+					.setParameter("role", "ROLE_USER")
 					.getResultList();
 		} catch (PersistenceException e) {
 			return null;
 		}
 	}
 
+	public List<TmStudent> findAllTestUsers() {
+		try {
+			return entityManager.createQuery("SELECT t from TmStudent t where t.account.role = :role")
+					.setParameter("role", "ROLE_TEST_USER")
+					.getResultList();
+		} catch (PersistenceException e) {
+			return null;
+		}
+	}
+	
 	public EntityManager getEntityManager() {
 		return entityManager;
 	}

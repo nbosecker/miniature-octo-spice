@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
+    <link href="../../../resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}" />
+    <link href="../../../resources/css/backgrid.css" rel="stylesheet" media="screen" th:href="@{/resources/css/backgrid.css}" />
+	<!-- script src="../../../resources/css/backgrid.css" rel="stylesheet" media="screen"></script -->
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
+    <script src="../../../resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>
+	<script src="../../../resources/js/backgrid.min.js" th:src="@{/resources/js/backgrid.min.js}"></script>
+</head>
+<body>
+
+<div th:fragment="body">
+    <div class="container">
+    	<div id="backgrid-example" class="backgrid-container"></div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+  var Territory = Backbone.Model.extend({});
+
+  var Territories = Backbone.Collection.extend({
+    model: Territory,
+    url: "students.json"
+  });
+
+  var territories = new Territories(); 
+  
+  var DeleteCell = Backgrid.UriCell.extend({
+	    template: _.template('<button><a>Update</a></button>'),
+/* 	    events: {
+	      "click": "updateRow"
+	    },
+	    updateRow: function (e) {
+	      console.log("Hello");
+	      //Backbone.trigger("rowclicked", this.model);
+	      e.preventDefault();
+	    }, */
+	    render: function () {
+	  	 // debugger;
+	  	  this.constructor.__super__.render.apply(this, arguments);
+	      this.$el.html(this.template());
+	      this.$("a").attr({href: "updateuser/"+ this.model.attributes.id });//"admin/" + this.model.attributes.id  + "/updateuser"});
+	      return this;
+	    }
+	});
+  
+  /* Backbone.on("rowclicked", function (model) {
+	  debugger;
+	  console.log("BLAH");
+	  var test = "admin/" + model.attributes.id  + "/updateuser";
+      this.$("a").attr({href: "admin/" + model.attributes.id  + "/updateuser"});
+	 }); */
+
+  var columns = [{
+	    name: "id", // The key of the model attribute
+	    label: "ID", // The name to display in the header
+	    editable: false, // By default every cell in a column is editable, but *ID* shouldn't be
+	    // Defines a cell type, and ID is displayed as an integer without the ',' separating 1000s.
+	    cell: Backgrid.IntegerCell.extend({
+	      orderSeparator: ''
+	    })
+	  }, {
+	    name: "firstName",
+	    label: "First Name",
+	    editable: false,
+	    cell: "string" 
+	  }, {
+	    name: "lastName",
+	    label: "Last Name",
+	    editable: false,
+	    cell: "string" 
+	  }, {
+		    name: "characterName",
+		    label: "Character Name",
+		    editable: false,
+		    cell: "string" 
+ 	  }, {
+		    name: "hw1",
+		    label: "HW #1",
+		    editable: false,
+		    cell: "number" 
+	  }, {
+		    name: "hw2",
+		    label: "HW #2",
+		    editable: false,
+		    cell: "number" 
+	  }, {
+		    name: "hw3",
+		    label: "HW #3",
+		    editable: false,
+		    cell: "number" 
+	  }, {
+		    name: "hw4",
+		    label: "HW #4",
+		    editable: false,
+		    cell: "number" 
+	  }, {
+		    name: "hw5",
+		    label: "HW #5",
+		    editable: false,
+		    cell: "number" 
+	  }, {
+		    name: "badge1",
+		    label: "Has Badge 1",
+		    editable: false,
+		    cell: "boolean" 
+	  }, {
+		    name: "badge2",
+		    label: "Has Badge 2",
+		    editable: false,
+		    cell: "boolean" 
+	  }, {
+		    name: "badge3",
+		    label: "Has Badge 3",
+		    editable: false,
+		    cell: "boolean" 
+	  }, {
+		    name: "badge4",
+		    label: "Has Badge 4",
+		    editable: false,
+		    cell: "boolean" 
+	  }, {
+		    name: "badge5",
+		    label: "Has Badge 5",
+		    editable: false,
+		    cell: "boolean" 
+	  }, {
+		    name: "badge6",
+		    label: "Has Badge 6",
+		    editable: false,
+		    cell: "boolean" 
+	  }, {
+		    name: "midterm",
+		    label: "Midterm Exam",
+		    editable: false,
+		    cell: "number" 
+	  }, {
+		    name: "thefinal",
+		    label: "Final Exam",
+		    editable: false,
+		    cell: "number" 
+	  }, {
+		    name: "finalGrade",
+		    label: "Final Grade",
+		    editable: false,
+		    cell: "number" 
+	  }, {
+		    name: "participation",
+		    label: "Participation",
+		    editable: false,
+		    cell: "number"  
+	  }, {
+		    name: "---",
+		    label: "Update",
+		    editable: false,
+		    cell: DeleteCell
+	}];
+
+	// Initialize a new Grid instance
+	var grid = new Backgrid.Grid({
+	  columns: columns,
+	  collection: territories
+	});
+
+	// Render the grid and attach the root to your HTML document
+	$("#backgrid-example").append(grid.render().el);
+
+	// Fetch some countries from the url
+	territories.fetch({reset: true});
+  
+  </script>
+</body>
+</html>

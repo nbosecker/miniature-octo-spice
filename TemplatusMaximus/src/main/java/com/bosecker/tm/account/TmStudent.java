@@ -318,4 +318,16 @@ public class TmStudent implements Comparable, java.io.Serializable {
 	{
 		return (this.account.getRole().equals("ROLE_ADMIN"));
 	}
+	public boolean isTestAdmin()
+	{
+		return (this.account.getRole().equals("ROLE_TEST_ADMIN"));
+	}
+	public boolean isUser()
+	{
+		return (this.account.getRole().equals("ROLE_USER"));
+	}
+	public boolean isTestUser()
+	{
+		return (this.account.getRole().equals("ROLE_TEST_USER"));
+	}
 }

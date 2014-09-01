@@ -76,13 +76,47 @@ public class HomeController {
 		return mapAsJson;
 	}
 	
+	@RequestMapping(value = "/teststudents.json", method = RequestMethod.GET)
+	public @ResponseBody String testStudentsJson(){
+				
+		List<TmStudent> studentList = tmStudentRepository.findAllTestUsers();
+				
+		ObjectMapper objMapper = new ObjectMapper(); // can reuse, share globally
+		String mapAsJson = null;
+		try {
+			mapAsJson = objMapper.writeValueAsString(studentList);
+		} catch (JsonGenerationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return mapAsJson;
+	}
+	
     @SuppressWarnings("unchecked")
 	@RequestMapping(value = "/leaderboard", method = RequestMethod.GET)
-    public String leaderboard(Model model) {
+    public String leaderboard(Principal principal, Model model) {
 		
-    	List<TmStudent> studentList = tmStudentRepository.findAll();
-    	Collections.sort(studentList);
-    	
+    	Account account = accountRepository.findByEmail(principal.getName());
+		TmStudent tmStudent = tmStudentRepository.findTmStudentById(account.getId());
+		List<TmStudent> studentList = null;
+		if ( tmStudent.isAdmin())
+		{
+			studentList = tmStudentRepository.findAll();
+	    	Collections.sort(studentList);
+		}
+		else if ( tmStudent.isTestAdmin())
+		{
+			studentList = tmStudentRepository.findAllTestUsers();
+	    	Collections.sort(studentList);
+		}
+		
     	model.addAttribute("students", studentList);
 		
     	return "home/leaderboard";
