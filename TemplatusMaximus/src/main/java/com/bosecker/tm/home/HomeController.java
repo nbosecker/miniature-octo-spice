@@ -3,6 +3,7 @@ package com.bosecker.tm.home;
 import java.io.File;
 import java.io.IOException;
 import java.security.Principal;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +15,7 @@ import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -102,4 +104,15 @@ public class HomeController {
 		return null;
 	}
 
+    @SuppressWarnings("unchecked")
+	@RequestMapping(value = "/leaderboard", method = RequestMethod.GET)
+    public String leaderboard(Model model) {
+		
+    	List<TmStudent> studentList = tmStudentRepository.findAll();
+    	Collections.sort(studentList);
+    	
+    	model.addAttribute("students", studentList);
+		
+    	return "home/leaderboard";
+    }
 }

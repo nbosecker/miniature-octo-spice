@@ -119,3 +119,118 @@ body {
 .CSSTableGenerator tr:first-child td:last-child{
 	border-width:0px 0px 1px 1px;
 }
+
+
+.TMLeaderboard {
+	margin:0px;padding:0px;
+	width:60%;
+	box-shadow: 10px 10px 5px #888888;
+	border:1px solid #000000;
+	
+	-moz-border-radius-bottomleft:0px;
+	-webkit-border-bottom-left-radius:0px;
+	border-bottom-left-radius:0px;
+	
+	-moz-border-radius-bottomright:0px;
+	-webkit-border-bottom-right-radius:0px;
+	border-bottom-right-radius:0px;
+	
+	-moz-border-radius-topright:0px;
+	-webkit-border-top-right-radius:0px;
+	border-top-right-radius:0px;
+	
+	-moz-border-radius-topleft:0px;
+	-webkit-border-top-left-radius:0px;
+	border-top-left-radius:0px;
+}.TMLeaderboard table{
+    border-collapse: collapse;
+        border-spacing: 0;
+	width:100%;
+	height:100%;
+	margin:0px;padding:0px;
+}.TMLeaderboard tr:last-child td:last-child {
+	-moz-border-radius-bottomright:0px;
+	-webkit-border-bottom-right-radius:0px;
+	border-bottom-right-radius:0px;
+}
+.TMLeaderboard table tr:first-child td:first-child {
+	-moz-border-radius-topleft:0px;
+	-webkit-border-top-left-radius:0px;
+	border-top-left-radius:0px;
+}
+.TMLeaderboard table tr:first-child td:last-child {
+	-moz-border-radius-topright:0px;
+	-webkit-border-top-right-radius:0px;
+	border-top-right-radius:0px;
+}.TMLeaderboard tr:last-child td:first-child{
+	-moz-border-radius-bottomleft:0px;
+	-webkit-border-bottom-left-radius:0px;
+	border-bottom-left-radius:0px;
+}.TMLeaderboard tr:hover td{
+	background-color:#ffaaff;
+		
+
+}
+.TMLeaderboard td{
+	vertical-align:middle;
+		background:-o-linear-gradient(bottom, #ff56ff 5%, #ffaaff 100%);	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ff56ff), color-stop(1, #ffaaff) ); 
+	background:-moz-linear-gradient( center top, #ff56ff 5%, #ffaaff 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff56ff", endColorstr="#ffaaff");	background: -o-linear-gradient(top,#ff56ff,ffaaff);
+
+	background-color:#ff56ff;
+
+	border:1px solid #000000;
+	border-width:0px 1px 1px 0px;
+	text-align:center;
+	padding:7px;
+	font-size:15px;
+	font-family:Comic Sans MS;
+	font-weight:normal;
+	color:#000000;
+}.TMLeaderboard tr:last-child td{
+	border-width:0px 1px 0px 0px;
+}.TMLeaderboard tr td:last-child{
+	border-width:0px 0px 1px 0px;
+}.TMLeaderboard tr:last-child td:last-child{
+	border-width:0px 0px 0px 0px;
+}
+.TMLeaderboard tr:first-child td{
+		background:-o-linear-gradient(bottom, #56ffff 5%, #007fff 100%);	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #56ffff), color-stop(1, #007fff) );
+	background:-moz-linear-gradient( center top, #56ffff 5%, #007fff 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#56ffff", endColorstr="#007fff");	background: -o-linear-gradient(top,#56ffff,007fff);
+
+	background-color:#56ffff;
+	border:0px solid #000000;
+	text-align:center;
+	border-width:0px 0px 1px 1px;
+	font-size:15px;
+	font-family:Comic Sans MS;
+	font-weight:bold;
+	color:#000000;
+}
+.TMLeaderboard tr:first-child:hover td{
+	background:-o-linear-gradient(bottom, #56ffff 5%, #007fff 100%);	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #56ffff), color-stop(1, #007fff) );
+	background:-moz-linear-gradient( center top, #56ffff 5%, #007fff 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#56ffff", endColorstr="#007fff");	background: -o-linear-gradient(top,#56ffff,007fff);
+
+	background-color:#56ffff;
+}
+.TMLeaderboard tr:first-child td:first-child{
+	border-width:0px 0px 1px 0px;
+}
+.TMLeaderboard tr:first-child td:last-child{
+	border-width:0px 0px 1px 1px;
+}
+
+#wrap {
+   width:"100%";
+   margin:0 auto;
+}
+#left_col {
+   float:left;
+   width:"50%"";
+}
+#right_col {
+   float:right;
+   width:"50%";
+}

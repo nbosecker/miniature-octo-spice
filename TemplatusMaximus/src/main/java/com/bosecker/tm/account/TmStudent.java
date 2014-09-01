@@ -13,7 +13,7 @@ import java.util.Calendar;
 @Entity
 @Table(name = "tm_student")
 @NamedQuery(name = TmStudent.FIND_ALL, query = "select tm from TmStudent tm")
-public class TmStudent implements java.io.Serializable {
+public class TmStudent implements Comparable, java.io.Serializable {
 
 	public static final String FIND_ALL = "TmStudent.findAll";
 
@@ -303,5 +303,14 @@ public class TmStudent implements java.io.Serializable {
 	public boolean isHealth0() {
 		return this.participation<=0;
 	}
-	
+
+	@Override
+	public int compareTo(Object o) {
+		if(o instanceof TmStudent) {
+			TmStudent tmStudent = (TmStudent)o;
+			return (int) (tmStudent.finalGrade - finalGrade);
+		}
+		
+		return 0;
+	}
 }
