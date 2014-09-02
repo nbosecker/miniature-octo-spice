@@ -67,7 +67,10 @@ public class UpdateUserController {
 	}
 	
 	@RequestMapping(value = "/updateuser", method = RequestMethod.POST)
-	public String updateUser(@Valid @ModelAttribute UpdateUserForm updateUserForm, Model model) {
+	public String updateUser(@Valid @ModelAttribute UpdateUserForm updateUserForm, Errors errors, Model model) {
+		if (errors.hasErrors()) {
+			return "home/updateuser";
+		}
 		
 		model.addAttribute("updateUserForm",updateUserForm);
 		
@@ -88,6 +91,9 @@ public class UpdateUserController {
 		tmStudent.setHw5(updateUserForm.getHw5());
 		tmStudent.setMidterm(updateUserForm.getMidtermExam());
 		tmStudent.setThefinal(updateUserForm.getFinalExam());
+		tmStudent.setParticipation(updateUserForm.getParticipation());
+		
+		tmStudent.setFinalGrade(tmStudent.calculateFinalGrade());
 		
 		tmStudentRepository.save(tmStudent);
 		

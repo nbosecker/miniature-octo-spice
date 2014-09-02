@@ -26,25 +26,25 @@ public class TmStudent implements Comparable, java.io.Serializable {
     private Account account;
 	
 	@Column(name="hw1")
-	private double hw1 = 0.0;
+	private double hw1 = -1;
 	
 	@Column (name="hw2")
-	private double hw2 = 0.0;
+	private double hw2 = -1;
 	
 	@Column (name="hw3")
-	private double hw3 = 0.0;
+	private double hw3 = -1;
 	
 	@Column (name="hw4")
-	private double hw4 = 0.0;
+	private double hw4 = -1;
 	
 	@Column (name="hw5")
-	private double hw5 = 0.0;
+	private double hw5 = -1;
 	
 	@Column (name="midterm")
-	private double midterm = 0.0;
+	private double midterm = -1;
 	
 	@Column (name="thefinal")
-	private double thefinal = 0.0;
+	private double thefinal = -1;
 	
 	@Column (name="participation")
 	private double participation = 40.0;
@@ -330,4 +330,55 @@ public class TmStudent implements Comparable, java.io.Serializable {
 	{
 		return (this.account.getRole().equals("ROLE_TEST_USER"));
 	}
+	
+	public double calculateFinalGrade()
+	{
+		double pointsPossible = 0.0;
+		double grade = 0.0;
+		
+		// Each homework is 10% of final grade. 5 HW for 50%.
+		if ( this.getHw1() >= 0 ) {
+
+			grade += .1 * this.getHw1();
+			pointsPossible += 10;
+		}
+		if ( this.getHw2() >= 0 ) {
+		
+			grade += .1 * this.getHw2();
+			pointsPossible += 10;
+		}
+		if ( this.getHw3() >= 0 ) {
+		
+			grade += .1 * this.getHw3();
+			pointsPossible += 10;
+		}
+		if ( this.getHw4() >= 0 ) {
+		
+			grade += .1 * this.getHw4();
+			pointsPossible += 10;
+		}
+		if ( this.getHw5() >= 0 ) {
+		
+			grade += .1 * this.getHw5();
+			pointsPossible += 10;
+		}
+		// Midterm is 15%
+		if ( this.getMidterm() >= 0 ) {
+
+			grade += .15 * this.getMidterm();
+			pointsPossible += 15;
+		}
+		// Final is 10%
+		if ( this.getThefinal() >= 0 ) {
+
+			grade += .1 * this.getThefinal();
+			pointsPossible += 10;
+		}		
+		// Participation is 25%
+		grade += .25 * this.getParticipation();
+		pointsPossible += 10;
+		
+		return (grade/pointsPossible)*100;
+	}
+	
 }

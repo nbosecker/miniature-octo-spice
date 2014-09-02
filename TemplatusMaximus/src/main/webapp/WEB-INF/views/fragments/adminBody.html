@@ -23,40 +23,24 @@
 
 
 <script type="text/javascript">
-  var Territory = Backbone.Model.extend({});
+  var TmStudent = Backbone.Model.extend({});
 
-  var Territories = Backbone.Collection.extend({
-    model: Territory,
+  var TmStudents = Backbone.Collection.extend({
+    model: TmStudent,
     url: "students.json"
   });
 
-  var territories = new Territories(); 
+  var students = new TmStudents(); 
   
-  var DeleteCell = Backgrid.UriCell.extend({
+  var UpdateCell = Backgrid.UriCell.extend({
 	    template: _.template('<button><a>Update</a></button>'),
-/* 	    events: {
-	      "click": "updateRow"
-	    },
-	    updateRow: function (e) {
-	      console.log("Hello");
-	      //Backbone.trigger("rowclicked", this.model);
-	      e.preventDefault();
-	    }, */
 	    render: function () {
-	  	 // debugger;
 	  	  this.constructor.__super__.render.apply(this, arguments);
 	      this.$el.html(this.template());
-	      this.$("a").attr({href: "updateuser/"+ this.model.attributes.id });//"admin/" + this.model.attributes.id  + "/updateuser"});
+	      this.$("a").attr({href: "updateuser/"+ this.model.attributes.id });
 	      return this;
 	    }
 	});
-  
-  /* Backbone.on("rowclicked", function (model) {
-	  debugger;
-	  console.log("BLAH");
-	  var test = "admin/" + model.attributes.id  + "/updateuser";
-      this.$("a").attr({href: "admin/" + model.attributes.id  + "/updateuser"});
-	 }); */
 
   var columns = [{
 	    name: "id", // The key of the model attribute
@@ -70,6 +54,7 @@
 	    name: "firstName",
 	    label: "First Name",
 	    editable: false,
+	    renderable: false,
 	    cell: "string" 
 	  }, {
 	    name: "lastName",
@@ -85,27 +70,87 @@
 		    name: "hw1",
 		    label: "HW #1",
 		    editable: false,
-		    cell: "number" 
+		    cell: Backgrid.Cell.extend({
+		        render: function(){
+		            var hw1 = this.model.get("hw1");
+		            if ( hw1 === -1 ){
+			            this.$el.text( '---' );
+		            }
+		            else {
+			            this.$el.text( hw1 );
+		            }
+		            // MUST do this for the grid to not error out
+		            return this;
+		        }
+		    }) 
 	  }, {
 		    name: "hw2",
 		    label: "HW #2",
 		    editable: false,
-		    cell: "number" 
+		    cell: Backgrid.Cell.extend({
+		        render: function(){
+		            var hw2 = this.model.get("hw2");
+		            if ( hw2 === -1 ){
+			            this.$el.text( '---' );
+		            }
+		            else {
+			            this.$el.text( hw2 );
+		            }
+		            // MUST do this for the grid to not error out
+		            return this;
+		        }
+		    }) 
 	  }, {
 		    name: "hw3",
 		    label: "HW #3",
 		    editable: false,
-		    cell: "number" 
+		    cell: Backgrid.Cell.extend({
+		        render: function(){
+		            var hw3 = this.model.get("hw3");
+		            if ( hw3 === -1 ){
+			            this.$el.text( '---' );
+		            }
+		            else {
+			            this.$el.text( hw3 );
+		            }
+		            // MUST do this for the grid to not error out
+		            return this;
+		        }
+		    }) 
 	  }, {
 		    name: "hw4",
 		    label: "HW #4",
 		    editable: false,
-		    cell: "number" 
+		    cell: Backgrid.Cell.extend({
+		        render: function(){
+		            var hw4 = this.model.get("hw4");
+		            if ( hw4 === -1 ){
+			            this.$el.text( '---' );
+		            }
+		            else {
+			            this.$el.text( hw4 );
+		            }
+		            // MUST do this for the grid to not error out
+		            return this;
+		        }
+		    }) 
 	  }, {
 		    name: "hw5",
 		    label: "HW #5",
 		    editable: false,
-		    cell: "number" 
+		    cell: Backgrid.Cell.extend({
+		        render: function(){
+		            var hw5 = this.model.get("hw5");
+		            if ( hw5 === -1 ){
+			            this.$el.text( '---' );
+		            }
+		            else {
+			            this.$el.text( hw5 );
+		            }
+		            // MUST do this for the grid to not error out
+		            return this;
+		        }
+		    }) 
 	  }, {
 		    name: "badge1",
 		    label: "Has Badge 1",
@@ -140,12 +185,36 @@
 		    name: "midterm",
 		    label: "Midterm Exam",
 		    editable: false,
-		    cell: "number" 
+		    cell: Backgrid.Cell.extend({
+		        render: function(){
+		            var midterm = this.model.get("midterm");
+		            if ( midterm === -1 ){
+			            this.$el.text( '---' );
+		            }
+		            else {
+			            this.$el.text( midterm );
+		            }
+		            // MUST do this for the grid to not error out
+		            return this;
+		        }
+		    }) 
 	  }, {
 		    name: "thefinal",
 		    label: "Final Exam",
 		    editable: false,
-		    cell: "number" 
+		    cell: Backgrid.Cell.extend({
+		        render: function(){
+		            var thefinal = this.model.get("thefinal");
+		            if ( thefinal === -1 ){
+			            this.$el.text( '---' );
+		            }
+		            else {
+			            this.$el.text( thefinal );
+		            }
+		            // MUST do this for the grid to not error out
+		            return this;
+		        }
+		    }) 
 	  }, {
 		    name: "finalGrade",
 		    label: "Final Grade",
@@ -160,20 +229,20 @@
 		    name: "---",
 		    label: "Update",
 		    editable: false,
-		    cell: DeleteCell
+		    cell: UpdateCell
 	}];
 
 	// Initialize a new Grid instance
 	var grid = new Backgrid.Grid({
 	  columns: columns,
-	  collection: territories
+	  collection: students
 	});
 
 	// Render the grid and attach the root to your HTML document
 	$("#backgrid-example").append(grid.render().el);
 
-	// Fetch some countries from the url
-	territories.fetch({reset: true});
+	// Fetch students from the url
+	students.fetch({reset: true});
   
   </script>
 </body>
