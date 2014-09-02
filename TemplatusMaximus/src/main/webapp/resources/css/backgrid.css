@@ -90,7 +90,7 @@
 	background-color:#ff7f00;
 }
 .backgrid tr:first-child td:first-child{
-	border-width:0px 0px 1px 0px;
+	border-width:1px 1px 1px 1px;
 }
 .backgrid tr:first-child td:last-child{
 	border-width:0px 0px 1px 1px;

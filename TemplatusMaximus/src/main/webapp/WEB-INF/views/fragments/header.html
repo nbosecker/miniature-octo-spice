@@ -2,7 +2,14 @@
 <html>
 <head>
     <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
+    <script src="../../../resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>
+	<script src="../../../resources/js/backgrid.min.js" th:src="@{/resources/js/backgrid.min.js}"></script>
+	<script src="../../../resources/js/core.js" th:src="@{/resources/js/core.js}"></script>
 </head>
+
 <body>
 
 <div class="navbar navbar-inverse navbar-fixed-top" th:fragment="header">
@@ -17,9 +24,9 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active myitem1"><a href="#" class="myitem" th:href="@{/}">Home</a></li>
-                <li class="myitem2" th:if="${#authorization.expression('isAuthenticated()')}"><a class="myitem" href="/leaderboard" th:href="@{/leaderboard}" th:action="@{/leaderboard}">Leaderboard</a></li>
-                <li class="myitem3" th:if="${#authorization.expression('isAuthenticated()')}"><a class="myitem" href="/narrative1" th:action="@{/narrative1}" th:href="@{/narrative1}">Narrative 1</a></li>
+                <li class="active"><a href="#" th:href="@{/}">Home</a></li>
+                <li th:if="${#authorization.expression('isAuthenticated()')}"><a href="/leaderboard" th:href="@{/leaderboard}" th:action="@{/leaderboard}">Leaderboard</a></li>
+                <!-- li th:if="${#authorization.expression('isAuthenticated()')}"><a href="/narrative1" th:action="@{/narrative1}" th:href="@{/narrative1}">Narrative 1</a></li -->
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li th:if="${#authorization.expression('!isAuthenticated()')}">
@@ -34,5 +41,6 @@
         <!--/.nav-collapse -->
     </div>
 </div>
+
 </body>
 </html>

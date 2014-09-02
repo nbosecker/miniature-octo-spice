@@ -247,14 +247,14 @@ body {
 
 
 .form-container {
-   border: 2px solid #f2e3d2;
-   background: #5c4b37;
-   background: -webkit-gradient(linear, left top, left bottom, from(#e0ac75), to(#5c4b37));
-   background: -webkit-linear-gradient(top, #e0ac75, #5c4b37);
-   background: -moz-linear-gradient(top, #e0ac75, #5c4b37);
-   background: -ms-linear-gradient(top, #e0ac75, #5c4b37);
-   background: -o-linear-gradient(top, #e0ac75, #5c4b37);
-   background-image: -ms-linear-gradient(top, #e0ac75 0%, #5c4b37 100%);
+   border: 1px solid #daf0d1;
+   background: #4ac2a4;
+   background: -webkit-gradient(linear, left top, left bottom, from(#4ac2a4), to(#4ac2a4));
+   background: -webkit-linear-gradient(top, #4ac2a4, #4ac2a4);
+   background: -moz-linear-gradient(top, #4ac2a4, #4ac2a4);
+   background: -ms-linear-gradient(top, #4ac2a4, #4ac2a4);
+   background: -o-linear-gradient(top, #4ac2a4, #4ac2a4);
+   background-image: -ms-linear-gradient(top, #4ac2a4 0%, #4ac2a4 100%);
    -webkit-border-radius: 8px;
    -moz-border-radius: 8px;
    border-radius: 8px;
@@ -287,7 +287,7 @@ body {
    color: #725129;
    }
 .form-container h2 {
-   text-shadow: #b39672 0 1px 0;
+   text-shadow: #6f57cf 0 1px 0;
    font-size:18px;
    margin: 0 0 10px 0;
    font-weight:bold;
@@ -295,30 +295,30 @@ body {
     }
 .form-title {
    margin-bottom:10px;
-   color: #422809;
-   text-shadow: #b39672 0 1px 0;
+   color: #452870;
+   text-shadow: #6f57cf 0 1px 0;
    }
 .submit-container {
    margin:8px 0;
    text-align:right;
    }
 .submit-button {
-   border: 3px solid #447314;
-   background: #6aa436;
-   background: -webkit-gradient(linear, left top, left bottom, from(#8dc059), to(#6aa436));
-   background: -webkit-linear-gradient(top, #8dc059, #6aa436);
-   background: -moz-linear-gradient(top, #8dc059, #6aa436);
-   background: -ms-linear-gradient(top, #8dc059, #6aa436);
-   background: -o-linear-gradient(top, #8dc059, #6aa436);
-   background-image: -ms-linear-gradient(top, #8dc059 0%, #6aa436 100%);
-   -webkit-border-radius: 8px;
-   -moz-border-radius: 8px;
-   border-radius: 8px;
-   -webkit-box-shadow: rgba(255,255,255,0.4) 0 0px 0, inset rgba(255,255,255,0.4) 0 1px 0;
-   -moz-box-shadow: rgba(255,255,255,0.4) 0 0px 0, inset rgba(255,255,255,0.4) 0 1px 0;
-   box-shadow: rgba(255,255,255,0.4) 0 0px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+   border: 1px solid #447314;
+   background: #7a0de0;
+   background: -webkit-gradient(linear, left top, left bottom, from(#7a0de0), to(#7a0de0));
+   background: -webkit-linear-gradient(top, #7a0de0, #7a0de0);
+   background: -moz-linear-gradient(top, #7a0de0, #7a0de0);
+   background: -ms-linear-gradient(top, #7a0de0, #7a0de0);
+   background: -o-linear-gradient(top, #7a0de0, #7a0de0);
+   background-image: -ms-linear-gradient(top, #7a0de0 0%, #7a0de0 100%);
+   -webkit-border-radius: 4px;
+   -moz-border-radius: 4px;
+   border-radius: 4px;
+   -webkit-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+   -moz-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+   box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
    text-shadow: #addc7e 0 1px 0;
-   color: #31540c;
+   color: #f4f7f7;
    font-family: helvetica, serif;
    padding: 8.5px 18px;
    font-size: 14px;
@@ -326,7 +326,7 @@ body {
    vertical-align: middle;
    }
 .submit-button:hover {
-   border: 3px solid #447314;
+   border: 1px solid #447314;
    text-shadow: #31540c 0 1px 0;
    background: #6aa436;
    background: -webkit-gradient(linear, left top, left bottom, from(#8dc059), to(#6aa436));
@@ -339,7 +339,7 @@ body {
    }
 .submit-button:active {
    text-shadow: #31540c 0 1px 0;
-   border: 3px solid #447314;
+   border: 1px solid #447314;
    background: #8dc059;
    background: -webkit-gradient(linear, left top, left bottom, from(#6aa436), to(#6aa436));
    background: -webkit-linear-gradient(top, #6aa436, #8dc059);
@@ -349,4 +349,8 @@ body {
    background-image: -ms-linear-gradient(top, #6aa436 0%, #8dc059 100%);
    color: #fff;
    }
+   
+   
+   
 
+   

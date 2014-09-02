@@ -106,12 +106,12 @@ public class HomeController {
     	Account account = accountRepository.findByEmail(principal.getName());
 		TmStudent tmStudent = tmStudentRepository.findTmStudentById(account.getId());
 		List<TmStudent> studentList = null;
-		if ( tmStudent.isAdmin())
+		if ( tmStudent.isAdmin() || tmStudent.isUser())
 		{
 			studentList = tmStudentRepository.findAll();
 	    	Collections.sort(studentList);
 		}
-		else if ( tmStudent.isTestAdmin())
+		else if ( tmStudent.isTestAdmin() || tmStudent.isTestUser())
 		{
 			studentList = tmStudentRepository.findAllTestUsers();
 	    	Collections.sort(studentList);
