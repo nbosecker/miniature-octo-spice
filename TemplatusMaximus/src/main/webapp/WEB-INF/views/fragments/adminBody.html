@@ -33,7 +33,7 @@
   var students = new TmStudents(); 
   
   var UpdateCell = Backgrid.UriCell.extend({
-	    template: _.template('<button><a>Update</a></button>'),
+	    template: _.template('<a class="button">Update</a>'),
 	    render: function () {
 	  	  this.constructor.__super__.render.apply(this, arguments);
 	      this.$el.html(this.template());
@@ -41,7 +41,6 @@
 	      return this;
 	    }
 	});
-
   var columns = [{
 	    name: "id", // The key of the model attribute
 	    label: "ID", // The name to display in the header
